@@ -4,6 +4,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Stats from './pages/Stats';
+import Tracker from './pages/Tracker';
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const userInfo = localStorage.getItem('userInfo');
@@ -32,6 +33,14 @@ const App: React.FC = () => {
           element={
             <ProtectedRoute>
               <Stats />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/tracker"
+          element={
+            <ProtectedRoute>
+              <Tracker />
             </ProtectedRoute>
           }
         />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FiHome, FiBarChart2, FiLogOut, FiCalendar } from 'react-icons/fi';
+import { FiHome, FiBarChart2, FiLogOut, FiClock } from 'react-icons/fi';
 import clsx from 'clsx';
 
 interface LayoutProps {
@@ -21,7 +21,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     const navItems = [
         { path: '/', icon: FiHome, label: 'Dashboard' },
         { path: '/stats', icon: FiBarChart2, label: 'Statistics' },
-        { path: '/calendar', icon: FiCalendar, label: 'Calendar' }, // Placeholder for future
+        { path: '/tracker', icon: FiClock, label: 'Tracker' },
     ];
 
     return (
