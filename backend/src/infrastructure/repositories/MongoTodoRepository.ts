@@ -10,18 +10,18 @@ export class MongoTodoRepository implements ITodoRepository {
             completed: todo.completed
         });
         await newTodo.save();
-        return new Todo(newTodo._id.toString(), newTodo.userId, newTodo.title, newTodo.completed, newTodo.createdAt);
+        return new Todo(newTodo._id.toString(), newTodo.userId.toString(), newTodo.title, newTodo.completed, newTodo.createdAt);
     }
 
     async findByUserId(userId: string): Promise<Todo[]> {
         const todos = await TodoModel.find({ userId }).sort({ createdAt: -1 });
-        return todos.map(todo => new Todo(todo._id.toString(), todo.userId, todo.title, todo.completed, todo.createdAt));
+        return todos.map(todo => new Todo(todo._id.toString(), todo.userId.toString(), todo.title, todo.completed, todo.createdAt));
     }
 
     async findById(id: string): Promise<Todo | null> {
         const todo = await TodoModel.findById(id);
         if (!todo) return null;
-        return new Todo(todo._id.toString(), todo.userId, todo.title, todo.completed, todo.createdAt);
+        return new Todo(todo._id.toString(), todo.userId.toString(), todo.title, todo.completed, todo.createdAt);
     }
 
     async update(todo: Todo): Promise<Todo> {
@@ -31,7 +31,7 @@ export class MongoTodoRepository implements ITodoRepository {
             { new: true }
         );
         if (!updatedTodo) throw new Error('Todo not found');
-        return new Todo(updatedTodo._id.toString(), updatedTodo.userId, updatedTodo.title, updatedTodo.completed, updatedTodo.createdAt);
+        return new Todo(updatedTodo._id.toString(), updatedTodo.userId.toString(), updatedTodo.title, updatedTodo.completed, updatedTodo.createdAt);
     }
 
     async delete(id: string): Promise<void> {

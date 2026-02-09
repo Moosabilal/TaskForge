@@ -37,7 +37,7 @@ export const update = async (req: Request, res: Response) => {
         const { id } = req.params;
         const updates = req.body;
         const userId = (req as any).user.id;
-        const todo = await updateTodo.execute(id, userId, updates);
+        const todo = await updateTodo.execute(id as string, userId, updates);
         res.json(todo);
     } catch (error) {
         res.status(400).json({ message: (error as Error).message });
@@ -48,7 +48,7 @@ export const remove = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const userId = (req as any).user.id;
-        await deleteTodo.execute(id, userId);
+        await deleteTodo.execute(id as string, userId);
         res.json({ message: 'Todo removed' });
     } catch (error) {
         res.status(400).json({ message: (error as Error).message });
