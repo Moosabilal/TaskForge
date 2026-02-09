@@ -5,12 +5,14 @@ export interface TodoDocument extends Document {
     title: string;
     completed: boolean;
     createdAt: Date;
+    dueDate?: Date;
 }
 
 const TodoSchema: Schema = new Schema({
     userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     title: { type: String, required: true },
     completed: { type: Boolean, default: false },
+    dueDate: { type: Date }
 }, {
     timestamps: true
 });

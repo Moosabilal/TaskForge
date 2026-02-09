@@ -20,7 +20,8 @@ export class UpdateTodo {
             todo.userId,
             updates.title ?? todo.title,
             updates.completed ?? todo.completed,
-            todo.createdAt
+            todo.createdAt,
+            updates.dueDate ?? todo.dueDate
         );
 
         return await this.todoRepository.update(updatedTodo);

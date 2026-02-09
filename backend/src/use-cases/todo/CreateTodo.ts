@@ -4,7 +4,7 @@ import { Todo } from '../../domain/entities/Todo';
 export class CreateTodo {
     constructor(private todoRepository: ITodoRepository) { }
 
-    async execute(userId: string, title: string): Promise<Todo> {
+    async execute(userId: string, title: string, dueDate?: Date): Promise<Todo> {
         if (!title) throw new Error('Title is required');
 
         const todo = new Todo(
@@ -12,7 +12,8 @@ export class CreateTodo {
             userId,
             title,
             false,
-            new Date()
+            new Date(),
+            dueDate
         );
 
         return await this.todoRepository.save(todo);

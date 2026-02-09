@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Stats from './pages/Stats';
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const userInfo = localStorage.getItem('userInfo');
@@ -23,6 +24,14 @@ const App: React.FC = () => {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/stats"
+          element={
+            <ProtectedRoute>
+              <Stats />
             </ProtectedRoute>
           }
         />
